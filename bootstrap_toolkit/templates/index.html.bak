@@ -1,0 +1,15 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>{{title}}</title>
+</head>
+<body>
+	虚IP端口:{{VIP}}<br>
+	内存:{{MEM}}M<br>
+	CPU:{{CPU}}核 CPU型号:{{CPUM}}<br>
+	网卡IP:{{IP}}<br>
+<div>运行状态<div>
+	{{STA.0}}
+</body>
+</html>
