@@ -16,7 +16,9 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-
+TEMPLATE_DIRS = (
+    os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/'),
+)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -91,3 +93,32 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+SUIT_CONFIG = {
+    # header
+     'ADMIN_NAME': 'Django Suit',
+     'HEADER_DATE_FORMAT': 'l, j. F Y',
+     'HEADER_TIME_FORMAT': 'H:i',
+
+    # forms
+     'SHOW_REQUIRED_ASTERISK': True,  # Default True
+     'CONFIRM_UNSAVED_CHANGES': True, # Default True
+
+    # menu
+     'SEARCH_URL': '/admin/auth/user/',
+     'MENU_ICONS': {
+        'sites': 'icon-leaf',
+        'auth': 'icon-lock',
+     },
+     'MENU_OPEN_FIRST_CHILD': True, # Default True
+     'MENU_EXCLUDE': ('auth.group','auth'),
+     'MENU': (
+         'sites',
+         {'app': 'auth', 'icon':'icon-lock', 'models': ('user', 'group')},
+         {'label': 'Settings', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group')},
+         {'label': 'Support', 'icon':'icon-question-sign', 'url': '/support/'},
+     ),
+
+    # misc
+     'LIST_PER_PAGE': 15
+}

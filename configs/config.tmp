@@ -1,0 +1,4 @@
+[master]
+ip_v = ['ipvsadm v1.26 2008/5/15 (compiled with popt and IPVS v1.2.1)\n', 'ipvsadm v1.26 2008/5/15 (compiled with popt and IPVS v1.2.1)\n']
+k_v = ['Keepalived v1.2.7 (02/21,2013)\n', 'Keepalived v1.2.7 (02/21,2013)\n']
+
