@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>{{title}}</title>
+</head>
+<body>
+	<div>VIP和端口</div>
+	{% for ip in vip_port %}
+	<form action="/delete_vip/" method="POST">
+	{% csrf_token %}
+	<input type="checkbox" value={{ip}} name="check_box_list"/>{{ip}}<br />
+	{% endfor %}
+	<input type="submit" value="删除"/>
+	</form>
+	<div>节点IP和端口</div>
+	{% for ip in node_ips %}
+	<form action="/delete_node/" method="POST">
+	{% csrf_token %}
+	<input type="checkbox" value={{ip}} name="check_box_list_1"/>{{ip}}<br />
+	{% endfor %}
+	<input type="submit" value="删除"/>
+	</form>
+</body>
+</html>
