@@ -3,7 +3,6 @@ from fabric.colors import red, green
 from fabric.context_managers import cd
 from fabric.operations import *
 from fabric.api import *
-import ConfigParser
 from configs.config import Get_data, Add_data
 import os
 current_path = os.getcwd()
@@ -41,6 +40,23 @@ def init_config():
 	Add_data("vip_nodes", "nodes", nodes_ip).add(current_path + '/configs/config.ini')
 	Add_data("soft", "ip_v",'').add(current_path + '/configs/config.ini')
 	Add_data("soft", "ke_v",'').add(current_path + '/configs/config.ini')
+
+@roles('master')
+def del_vip(ip = ""):
+	with settings(
+		hide('running', 'stdout', 'stderr', 'output'),
+		warn_only=True
+		):
+		run("ipvsadm -D -t %s" % ip)
+
+@roles('master')
+def del_node(vip = "", node = ""):
+	with settings(
+		hide('running', 'stdout', 'stderr', 'output'),
+		warn_only=True
+		):
+		run("ipvsadm -d -t %s -r %s" % (vip,node))
+
 @roles('slave')
 def host_type():
 	run('uname -s')
