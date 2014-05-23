@@ -50,12 +50,28 @@ def del_vip(ip = ""):
 		run("ipvsadm -D -t %s" % ip)
 
 @roles('master')
+def add_vip(ip = "", scheduler = ""):
+	with settings(
+		hide('running', 'stdout', 'stderr', 'output'),
+		warn_only=True
+		):
+		run("ipvsadm -A -t %s -s %s" % (ip,scheduler))
+
+@roles('master')
 def del_node(vip = "", node = ""):
 	with settings(
 		hide('running', 'stdout', 'stderr', 'output'),
 		warn_only=True
 		):
 		run("ipvsadm -d -t %s -r %s" % (vip,node))
+
+@roles('master')
+def add_node(vip = "", node = "", model = "", weight = ""):
+	with settings(
+		hide('running', 'stdout', 'stderr', 'output'),
+		warn_only=True
+		):
+		run("ipvsadm -a -t %s -r %s %s -w %s" % (vip,node,model,weight))
 
 @roles('slave')
 def host_type():

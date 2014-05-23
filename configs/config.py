@@ -12,6 +12,7 @@ class Get_data:
         self.data = dataConfig.get(project,list)
         self.data = self.data[1:-1]
         self.data = self.data.replace("'","")
+	self.data = self.data.replace(" ","")
         self.data = self.data.strip()
         self.data = self.data.split(',')
 
