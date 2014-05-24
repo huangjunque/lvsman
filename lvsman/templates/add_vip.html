@@ -7,7 +7,20 @@
 <body>
 <form action="/add_vip/" method="get" class="well form-inline">
   <input type="text" name="vip" class="input-small" placeholder="VIP 地址:端口">
-  <input type="text" name="scheduler" class="input-small" placeholder="调度算法" maxlength="5" size="5">
+  <select name="select" id="select">
+  <option></option>
+  <option>RR</option>
+  <option>WRR</option>
+  <option>LC</option>
+  <option>WLC</option>
+  <option>LBLC</option>
+  <option>LBLCR</option>
+  <option>DH</option>
+  <option>SH</option>
+  <option>SED</option>
+  <option>NQ</option>
+  </select>
+  <!--<input type="text" name="scheduler" class="input-small" placeholder="调度算法" maxlength="5" size="5">-->
   <button type="submit" class="btn">添加</button>
 </form>
 </body>
